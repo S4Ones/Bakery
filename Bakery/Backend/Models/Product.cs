@@ -7,6 +7,7 @@
         public string Description { set; get; }
         public ushort Price { set; get; }
         public bool isFavourite { set; get; }
+        public string img { set; get; }
         public int categoryID { set; get; }
         public virtual Category Category { set; get; }
     }
