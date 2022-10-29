@@ -1,20 +1,21 @@
-﻿using Bakery.Interfaces;
-using Bakery.Models;
+﻿using Bakery.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Bakery.Backend.mocks
+namespace Bakery.Backend
 {
-    public class MockProducts : IAllProducts
+    public class DbObjects
     {
-        private readonly IProductCategory _categoryProducts = new MockCategory();
+        public static void Initial(AppDBContent content)
+        {                   
+            if (!content.Category.Any())
+                content.Category.AddRange(Categories.Select(c => c.Value));
 
-        public IEnumerable<Product> Products
-        {
-            get
+            if(!content.Product.Any())
             {
-                return new List<Product>
-                {
+                content.AddRange(
                     new Product
                     {
                         Name = "Хлеб Пшеничный (1с)",
@@ -23,7 +24,7 @@ namespace Bakery.Backend.mocks
                         Price = 24,
                         isFavourite = true,
                         img = "/img/Пшеничный.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -33,7 +34,7 @@ namespace Bakery.Backend.mocks
                         Price = 21,
                         isFavourite = true,
                         img = "/img/Дарницкик.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -43,7 +44,7 @@ namespace Bakery.Backend.mocks
                         Price = 15,
                         isFavourite = false,
                         img = "/img/Дачный.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -53,7 +54,7 @@ namespace Bakery.Backend.mocks
                         Price = 14,
                         isFavourite = false,
                         img = "/img/Ржано.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -63,7 +64,7 @@ namespace Bakery.Backend.mocks
                         Price = 16,
                         isFavourite = true,
                         img = "/img/Зерновой.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -73,7 +74,7 @@ namespace Bakery.Backend.mocks
                         Price = 22,
                         isFavourite = true,
                         img = "/img/Славянский.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -83,7 +84,7 @@ namespace Bakery.Backend.mocks
                         Price = 22,
                         isFavourite = false,
                         img = "/img/Бородино.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -93,7 +94,7 @@ namespace Bakery.Backend.mocks
                         Price = 15,
                         isFavourite = false,
                         img = "/img/отрубями.jpg",
-                        Category = _categoryProducts.AllCategories.First()
+                        Category = Categories["Хлеб"]
                     },
                     new Product
                     {
@@ -103,7 +104,7 @@ namespace Bakery.Backend.mocks
                         Price = 24,
                         isFavourite = true,
                         img = "/img/батон.jpg",
-                        Category = _categoryProducts.AllCategories.Last()
+                        Category = Categories["К чаю"]
                     },
                     new Product
                     {
@@ -113,7 +114,7 @@ namespace Bakery.Backend.mocks
                         Price = 24,
                         isFavourite = true,
                         img = "/img/плетенка.jpg",
-                        Category = _categoryProducts.AllCategories.Last()
+                        Category = Categories["К чаю"]
                     },
                     new Product
                     {
@@ -123,7 +124,7 @@ namespace Bakery.Backend.mocks
                         Price = 24,
                         isFavourite = false,
                         img = "/img/Солнышко.jpg",
-                        Category = _categoryProducts.AllCategories.Last()
+                        Category = Categories["К чаю"]
                     },
                     new Product
                     {
@@ -133,7 +134,7 @@ namespace Bakery.Backend.mocks
                         Price = 22,
                         isFavourite = true,
                         img = "/img/Сдобный.jpg",
-                        Category = _categoryProducts.AllCategories.Last()
+                        Category = Categories["К чаю"]
                     },
                     new Product
                     {
@@ -143,17 +144,36 @@ namespace Bakery.Backend.mocks
                         Price = 15,
                         isFavourite = true,
                         img = "/img/Розанчик.jpg",
-                        Category = _categoryProducts.AllCategories.Last()
+                        Category = Categories["К чаю"]
                     }
-                };
+                );
             }
+
+            content.SaveChanges();
         }
 
-        public IEnumerable<Product> GetFavProducts { get; set; }
-
-        public Product getObjectProduct(int productID)
+        private static Dictionary<string, Category> category;
+        public static Dictionary<string, Category> Categories
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                if(category == null)
+                {
+                    var list = new Category[]
+                    {
+                        new Category {categoryName = "Хлеб", desc = "Хлебобулочное изделие, получаемое путём выпекания теста, разрыхлённого дрожжами или закваской."},
+                        new Category {categoryName = "К чаю", desc = "К чаю традиционно подают десерты – пирожки и булочки, конфеты, кексы, печенья, – только лишь сладким ограничиваться не стоит."}
+                    };
+
+                    category = new Dictionary<string, Category>();
+                    foreach(Category el in list)
+                    {
+                        category.Add(el.categoryName, el);
+                    }
+                }
+
+                return category;
+            }
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿@using Bakery.ViewModels
+@model ShopProductViewModel
+
+@{
+    ViewData["Title"] = "Корзина";
+}
+@{ 
+    double totalCoast = 0;
+}
+<div class="container">
+    @foreach  (var el in Model.shopProducts.listShopItem)
+    {
+            <div class = "alert  alert-warning mt-3">
+                <b>Товар:</b> @el.product.Name<br />
+                <b>Цена:</b> @el.product.Price.ToString("c")
+            </div>
+        totalCoast += el.product.Price;
+    }
+    <hr />
+
+    <b>Общая стоимость заказа: @totalCoast.ToString("c")</b>
+    <hr />
+
+    <a class="btn btn-danger" asp-controller="Order" asp-action="Checkout">Оплатить</a>
+</div>
+

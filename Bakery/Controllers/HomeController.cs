@@ -1,4 +1,6 @@
-﻿using Bakery.Models;
+﻿using Bakery.Interfaces;
+using Bakery.Models;
+using Bakery.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,27 +13,20 @@ namespace Bakery.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IAllProducts _productRep;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IAllProducts productRep)
         {
-            _logger = logger;
+            _productRep = productRep;
         }
 
-        public IActionResult Index()
+        public ViewResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var homeProduct = new HomeViewModel
+            {
+                favProduct = _productRep.GetFavProducts
+            };
+            return View(homeProduct);
         }
     }
 }

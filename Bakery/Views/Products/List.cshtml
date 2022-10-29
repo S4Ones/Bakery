@@ -1,15 +1,14 @@
 ﻿@using Bakery.ViewModels
-@model HomeViewModel
+@model ProductListViewModel
 
 @{
-    ViewData["Title"] = "Пекарня";
+    Layout = "_Layout";
+    ViewData["Title"] = "Товары";
 }
 
-
-<h3>Популярные товары</h3>
 <div class="row mt-5 mb-2">
     @{
-        foreach(var Model in Model.favProduct)
+        foreach(var Model in Model.getAllProducts)
         {
             <div class="col-lg-4">
                 <img class="img-thumbnail" src="@Model.img" alt="@Model.Name">
@@ -20,3 +19,4 @@
         }
     }
 </div>
+
