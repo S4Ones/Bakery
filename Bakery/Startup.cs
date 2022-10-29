@@ -36,7 +36,7 @@ namespace Bakery
             services.AddTransient<IProductCategory, CategoryRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShopProducts.GetProduct(sp));
-            services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddMemoryCache();
             services.AddSession();
         }
@@ -61,6 +61,11 @@ namespace Bakery
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMvc(routes => {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(name: "CategoryFilter", template: "Product/{action}/{category?}", defaults: new { Controller = "Products", action = "List" });
+            });
 
             AppDBContent content;
             using (var scope = app.ApplicationServices.CreateScope())

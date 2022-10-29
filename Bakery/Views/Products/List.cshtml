@@ -6,6 +6,8 @@
     ViewData["Title"] = "Товары";
 }
 
+<h3 align="center">@Model.currCategory</h3>
+
 <div class="row mt-5 mb-2">
     @{
         foreach(var Model in Model.getAllProducts)
