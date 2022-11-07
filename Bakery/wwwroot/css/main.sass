@@ -1,0 +1,122 @@
+html,body
+  margin: 0
+  padding: 0
+  color: white
+  font-family: 'Yanone Kaffeesatz', sans-serif
+a, a:hover
+  text-decoration: none
+  color: white
+
+.main_page_container
+  background-image: url(../img/bg1.jpg)
+  background-size: cover
+  height: 100vh
+  display: flex
+  flex-direction: column
+  .text_area
+    width: 30%
+    height: 30vh
+    align-self: center
+    margin-top: 20vh
+    text-align: center
+    color: white
+    font-size: 2rem
+    h3
+      font-size: 3rem
+      color: white
+      margin-bottom: 3vh
+      letter-spacing: 2px
+  .arrow
+    margin-top: 10vh
+    width: 300px
+    height: 150px
+    background-image: url(../img/arrow.gif)
+    background-size: cover
+    align-self: center
+.products_container
+  min-height: 100vh
+  display: flex
+  text-align: center
+  color: black
+  flex-direction: column
+  a, a:hover
+    text-decoration: none
+    color: black
+  .products_area
+    width: 80%
+    margin-top: 10vh
+    min-height: 80vh
+    display: flex
+    align-self: center
+    justify-content: space-around
+    flex-wrap: wrap
+    fle
+    .tovar
+      display: flex
+      flex-direction: column
+      width: 350px
+      height: 400px
+      img
+        width: 100%
+        height: 300px
+      h4
+        margin-top: 2vh
+        margin-bottom: 1vh
+        font-size: 1.8rem
+      .price
+        font-size: 1.2rem
+.cart_container
+  min-height: 100vh
+  display: flex
+  text-align: center
+  color: black
+  flex-direction: column
+.modal
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  margin: auto
+  display: none
+  opacity: 0
+  z-index: 38
+  width: 100vw
+  height: 100vh
+  background-color: white
+  img
+    margin-left: 20vw
+    margin-top: 10vh
+    width: 500px
+    height: 500px
+  .exit
+    margin-right: 2vw
+    margin-top: 2vh
+    position: absolute
+    right: 0
+    top: 0
+    width: 30px
+    height: 30px
+    background-image: url(../img/exit.png)
+    background-size: cover
+header
+  font-weight: 300
+  font-size: 30px
+  height: 100px
+  width: 100%
+  display: flex
+  .container
+    margin-top: 50px
+    width: 50%
+    display: flex
+    justify-content: space-around
+    align-items: center
+    .name
+      font-size: 45px
+      font-weight: 400
+footer
+  height: 100px
+  background-color: black
+.spacer
+  height: 100px
+  width: 100%
