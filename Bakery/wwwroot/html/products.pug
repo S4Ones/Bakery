@@ -25,8 +25,14 @@ body
             if i%3 == 0
               .spacer
   .modal
-    img()
+    .modal_container
+      img()
+      .modal_text
+        h2 Батон Типа
+        h4 всего 16.00 р.
+        button.btn-cart Добавить в корзину
     .exit
+    
   include footer.html
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
 script(src='../js/index.js')

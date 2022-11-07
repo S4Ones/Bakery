@@ -1,9 +1,12 @@
 $(document).ready(function() {
   $('.contacts').click(function(){
     $('html').animate({
-        scrollTop: $('.footer').offset().bot
-      }, 500);
+        scrollTop: $('.footer').offset().top
+      },  {
+        duration: 370,   // по умолчанию «400»
+        easing: "linear" // по умолчанию «swing»500);
   });
+});
   $('.tovar').click(function(){
     var nomer= $(this).attr('id');
     $('.modal')
