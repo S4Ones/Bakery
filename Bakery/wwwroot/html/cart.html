@@ -76,11 +76,43 @@
       <div class="itog">
         <h3>Количество товаров:</h3>
         <h3>Сумма:  16 руб.</h3>
-        <button>Оформить</button>
+        <button id="itog">Оформить</button>
       </div>
     </div>
   </div>
-<footer class="footer"></footer>
+  <div class="modal_cart">
+    <div class="modal_container_cart">
+      <h1>Сделать заказ</h1>
+      <form>
+        <div class="inputbox">
+          <input type="text" required="required"><span>Имя</span>
+        </div>
+        <div class="inputbox">
+          <input type="text" required="required"><span>Организация</span>
+        </div>
+        <div class="inputbox">
+          <input type="phone" required="required"><span>Номер телефона</span>
+        </div>
+        <div class="inputbox">
+          <input type="text" required="required"><span>Адрес</span>
+        </div>
+        <div class="inputbox">
+          <input type="text" required="required"><span>Почта</span>
+        </div>
+        <div class="inputbox">
+          <input type="button" value="Заказать">
+        </div>
+      </form>
+    </div>
+    <div class="exit"></div>
+  </div>
+<footer class="footer">
+  <div class="contacts_area_hor">
+    <div class="contacts_area_vert"><a href="tel:8978546755">897065745</a><a href="tel:8978546755">847564755</a></div>
+    <div class="contacts_area_vert"><a href="mailto: papssdj@mail.ru">email</a><a class="adress">adress</a></div>
+  </div>
+  <div class="designed_by"><span>Designed by IT Kitten Club ©️</span><img src="../img/logo.jpg"/></div>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../js/index.js"></script>
 </body>

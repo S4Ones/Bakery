@@ -30,5 +30,27 @@ body
       .itog
         h3 Количество товаров:
         h3 Сумма:  #{tsena} руб.
-        button Оформить
+        button#itog Оформить
+  .modal_cart
+    .modal_container_cart
+      h1 Сделать заказ
+      form
+        .inputbox
+          input(type='text' required='required')
+          span Имя
+        .inputbox
+          input(type='text' required='required')
+          span Организация
+        .inputbox
+          input(type='phone' required='required')
+          span Номер телефона
+        .inputbox
+          input(type='text' required='required')
+          span Адрес
+        .inputbox
+          input(type='text' required='required')
+          span Почта
+        .inputbox
+          input(type='button' value='Заказать')
+    .exit
   include footer.html
