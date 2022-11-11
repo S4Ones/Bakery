@@ -157,12 +157,7 @@ a, a:hover
       flex-direction: column
       justify-content: flex-end
       align-items: flex-end
-      button
-        word-break: break-all
-        height: 50px
-        width: 100px
-        font-size: 1.5rem
-        border-radius: 5px
+
 .tovar_area
   display: flex
   justify-content: space-between
@@ -281,7 +276,22 @@ footer
   top: 0px
   left: 0px
 //form
-
+.modal_zakaz
+  color: black
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  margin: auto
+  z-index: 38
+  width: 100vw
+  height: 100vh
+  .modal_container_cart
+    margin-left: 35vw
+    margin-top: 10vh
+    h1
+      width: 20vw
 .modal_container_cart h1
   font-size: 3rem
   border-left: 5px solid black
@@ -336,3 +346,13 @@ footer
 .modal_container_cart .inputbox [type="button"]:active
   border-bottom: 1px solid black
   border-right: 1px solid black
+#itog
+  appearance: button
+  word-break: break-all
+  height: 50px
+  width: 100px
+  font-size: 1.5rem
+  border-radius: 5px
+  border: 2px solid black
+  text-align: center
+  padding: 5px
